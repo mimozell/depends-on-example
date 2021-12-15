@@ -7,3 +7,7 @@ variable "static" {}
 output "regions" {
   value = data.aws_regions.regions.names
 }
+
+output "static" {
+  value = var.static
+}

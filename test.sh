@@ -7,15 +7,15 @@ echo
 echo "==> WITHOUT DEPENDS ON"
 echo
 terraform init
-terraform plan -out plan
-terraform apply plan
+terraform plan -out terraform.plan
+terraform apply terraform.plan
 
 echo
 echo "==> WITH DEPENDS ON"
 echo
 sed -I '' -E 's/  # depends_on (.*)/  depends_on \1/g' main.tf
 terraform init
-terraform plan -out plan
+terraform plan
 
 echo
 echo "==> RESET BACK"

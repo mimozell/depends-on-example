@@ -6,6 +6,14 @@ resource "random_string" "random" {
   }
 }
 
+resource "time_sleep" "sleep10s" {
+  create_duration = "10s"
+
+  depends_on = [
+    random_string.random,
+  ]
+}
+
 output "random" {
   value = random_string.random.result
 }
