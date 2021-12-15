@@ -1,10 +1,15 @@
 resource "random_string" "random" {
-  length           = 16
+  length = 16
+
   keepers = {
     first = timestamp()
   }
 }
 
-output "random_string" {
+output "random" {
   value = random_string.random.result
+}
+
+output "static" {
+  value = "never changes"
 }

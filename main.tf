@@ -9,22 +9,26 @@ terraform {
 
 provider "aws" {
   region  = "eu-west-2"
-  profile = "region-read"
 }
 
-module "a" {
-  source = "./module-a"
+module "random" {
+  source = "./modules/random"
 }
 
-module "b" {
-  source = "./module-b"
-  #  depends_on = [module.a]
+module "regions" {
+  source = "./modules/regions"
+
+  static = module.random.static
+
+  # depends_on = [
+  #   module.random
+  # ]
 }
 
-output "module_a_output" {
-  value = module.a.random_string
+output "random" {
+  value = module.random
 }
 
-output "module_b_output" {
-  value = module.b.data-output
+output "regions" {
+  value = module.regions
 }
