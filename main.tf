@@ -18,7 +18,7 @@ module "a" {
 
 module "b" {
   source = "./module-b"
-  #  depends_on = [module.a]
+#  depends_on = [module.a]
 }
 
 output "module_a_output" {
@@ -26,5 +26,5 @@ output "module_a_output" {
 }
 
 output "module_b_output" {
-  value = module.b.data-output
+  value = module.b.data_output
 }
