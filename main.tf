@@ -20,7 +20,7 @@ module "regions" {
 
   static = module.random.static
 
-  # depends_on = [module.random]
+  depends_on = [module.random]
 }
 
 output "random" {
