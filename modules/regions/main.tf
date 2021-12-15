@@ -4,10 +4,18 @@ data "aws_regions" "regions" {
 
 variable "static" {}
 
+variable "varies" {}
+
 output "regions" {
-  value = data.aws_regions.regions.names
+  value = { for name in data.aws_regions.regions.names:
+    name => name
+  }
 }
 
 output "static" {
   value = var.static
+}
+
+output "varies" {
+  value = var.varies
 }
